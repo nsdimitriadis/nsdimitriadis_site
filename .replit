@@ -26,7 +26,7 @@ outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npx astro dev --host 0.0.0.0 --port 5000"
+args = "npx astro dev --host 0.0.0.0 --port 5000 --no-open"
 waitForPort = 5000
 
 [[ports]]

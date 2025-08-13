@@ -26,8 +26,12 @@ export default defineConfig({
       exclude: ['@astrojs/react']
     },
     server: {
-      host: true,
-      allowedHosts: ['all']
+      host: '0.0.0.0',
+      port: 5000,
+      strictPort: true,
+      hmr: {
+        clientPort: 5000
+      }
     }
   },
   output: 'static',
