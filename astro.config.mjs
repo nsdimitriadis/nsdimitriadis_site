@@ -23,6 +23,10 @@ export default defineConfig({
       wrap: true
     }
   },
+  output: 'static',
+  build: {
+    inlineStylesheets: 'auto'
+  },
   vite: {
     optimizeDeps: {
       exclude: ['@astrojs/react']
@@ -30,10 +34,8 @@ export default defineConfig({
     server: {
       host: '0.0.0.0',
       port: 5000,
-      // Replit proxies sometimes ignore `true`; explicit host is the most reliable.
       allowedHosts: [REPLIT_HOST],
       hmr: {
-        // HMR through Replit’s HTTPS proxy
         protocol: 'wss',
         host: REPLIT_HOST,
         clientPort: 443,
@@ -44,9 +46,6 @@ export default defineConfig({
       host: '0.0.0.0',
       port: 5000,
       allowedHosts: [REPLIT_HOST],
-    },
-    output: 'static',
-    build: {
-      inlineStylesheets: 'auto'
     }
-  });
+  }
+});
