@@ -5,6 +5,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
 
+const REPLIT_HOST = 'c584ee27-3a6a-44fc-b770-b7c9d728653a-00-zjnq8vkgavcp.worf.replit.dev';
+
 export default defineConfig({
   site: 'https://nikos-dimitriadis.github.io',
   base: '/',
@@ -28,14 +30,23 @@ export default defineConfig({
     server: {
       host: '0.0.0.0',
       port: 5000,
-      strictPort: true,
+      // Replit proxies sometimes ignore `true`; explicit host is the most reliable.
+      allowedHosts: [REPLIT_HOST],
       hmr: {
-        clientPort: 5000
-      }
+        // HMR through Replit’s HTTPS proxy
+        protocol: 'wss',
+        host: REPLIT_HOST,
+        clientPort: 443,
+      },
+      strictPort: false,
+    },
+    preview: {
+      host: '0.0.0.0',
+      port: 5000,
+      allowedHosts: [REPLIT_HOST],
+    },
+    output: 'static',
+    build: {
+      inlineStylesheets: 'auto'
     }
-  },
-  output: 'static',
-  build: {
-    inlineStylesheets: 'auto'
-  }
-});
+  });
