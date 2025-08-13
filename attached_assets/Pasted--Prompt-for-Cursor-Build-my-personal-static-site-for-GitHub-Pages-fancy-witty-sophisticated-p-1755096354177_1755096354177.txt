@@ -1,0 +1,72 @@
+# Prompt for Cursor: Build my personal static site for GitHub Pages (fancy, witty, sophisticated — professional & personal)
+
+You are an expert front‑end engineer and brand/UX designer. You will scaffold and ship a **static** personal website for me (Nikos Dimitriadis) that I can host on **GitHub Pages**. It should look like the work of a senior front‑end developer: visually striking, playful, **VERY sophisticated**, with tasteful micro‑interactions, typography, spacing, and motion.
+
+Tone: warm, subtly humorous, confident but not arrogant. The site should clearly separate **professional** and **personal** sections, while allowing both to shine. The **landing page** should be fairly generic, inviting the user to explore further — with clear paths to dive into **my professional work** or **my personal interests**.
+
+Professional section: crisp, credible, showcasing my work as a **data engineer/software engineer** (note: I’ve never done UI work — lean into a design that looks great without pretending I built it myself). Personal section: fun, engaging, more informal, with room for posts on music, sports, and other interests.
+
+---
+
+## Tech & Architecture
+
+* **Framework:** Astro (static site, zero server). Optimize for Lighthouse 95+.
+* **Styling:** Tailwind CSS with logical, composable utilities. CSS variables for theme tokens.
+* **Content:** Markdown/MDX for posts & pages, separated into collections for professional and personal.
+* **Components:** Astro islands with React only where needed.
+* **Motion:** Motion One or Framer Motion via React islands.
+* **Icons:** Lucide.
+* **Search:** Pagefind.
+* **Images:** Astro Image.
+* **SEO:** astro-seo or custom head.
+* **Analytics:** Plausible.
+
+---
+
+## Brand & Aesthetic
+
+* **Look:** Minimalist editorial + playful flourishes.
+* **Typography:** Modern grotesk for headings, clean sans-serif for body.
+* **Color:** Black as the main theme color (background or dominant areas), with accents and details in purple, pink, silver, and blue. Use gradients (e.g., purple→blue, pink→purple) sparingly for emphasis.
+* **Motion:** Fast, elegant, respectful of reduced-motion.
+* **Delight:** Easter eggs (e.g., fun animations in personal section).
+
+---
+
+## Content Model
+
+Collections for:
+
+* `pages`
+* `posts` (long-form, can be tagged professional/personal)
+* `notes` (short-form, tagged)
+* `links`
+
+---
+
+## Pages & Sections
+
+* **Home** — generic hero, brief intro, call-to-action to explore Professional or Personal.
+* **Professional** — work history, skills, projects, blog posts tagged as professional.
+* **Personal** — interests, stories, short posts, music/running notes.
+* **About** — combined bio with professional + personal split.
+* **Writing** — all posts with tag filters.
+* **Contact** — friendly, non-spammy.
+* **404** — witty.
+
+---
+
+## Navigation
+
+Top nav: Home, Professional, Personal, Writing, About, Contact.
+Footer: email, social links, fun animation.
+
+---
+
+## Acceptance Criteria
+
+* Landing page routes clearly to professional vs personal.
+* Professional section conveys credibility; personal section is playful.
+* All editable via MDX.
+* Lighthouse 95+.
+* Theme uses black as base with purple/pink/silver/blue accents throughout.
