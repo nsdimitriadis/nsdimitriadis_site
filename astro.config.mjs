@@ -24,6 +24,10 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       exclude: ['@astrojs/react']
+    },
+    server: {
+      host: true,
+      allowedHosts: ['all']
     }
   },
   output: 'static',
