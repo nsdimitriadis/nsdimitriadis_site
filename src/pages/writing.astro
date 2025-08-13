@@ -1,0 +1,253 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostCard from '@/components/PostCard.astro';
+import TagFilter from '@/components/TagFilter';
+import Search from '@/components/Search';
+import { getCollection } from 'astro:content';
+
+// Get all posts and extract unique tags
+const allPosts = await getCollection('posts');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))].sort();
+
+// Get featured posts (latest 3)
+const featuredPosts = sortedPosts.slice(0, 3);
+const regularPosts = sortedPosts.slice(3);
+---
+
+<BaseLayout 
+  title="Writing | Nikos Dimitriadis"
+  description="Thoughts, insights, and stories from both my professional and personal journey in data engineering and life."
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] flex items-center justify-center px-4">
+    <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-transparent to-neon-pink/10"></div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6 animate-slide-up">
+        <span class="bg-gradient-to-r from-neon-purple via-neon-pink to-neon-blue bg-clip-text text-transparent">
+          Writing
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-gray-300 mb-12 animate-fade-in animation-delay-200">
+        Thoughts, insights, and stories from both my professional journey and personal adventures.
+      </p>
+
+      <!-- Search -->
+      <div class="max-w-lg mx-auto animate-fade-in animation-delay-400">
+        <Search 
+          client:load
+          placeholder="Search posts..."
+          className="w-full"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Tag Filter & Stats -->
+  <section class="py-12 px-4 bg-dark-gray/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col lg:flex-row items-start gap-8">
+        <!-- Tag Filter -->
+        <div class="w-full lg:w-2/3">
+          <TagFilter 
+            client:load
+            tags={allTags}
+            onTagChange={(tags) => {
+              // This will be handled by the client-side component
+              const event = new CustomEvent('tagsChanged', { detail: tags });
+              window.dispatchEvent(event);
+            }}
+          />
+        </div>
+
+        <!-- Writing Stats -->
+        <div class="w-full lg:w-1/3">
+          <div class="bg-medium-gray rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">Writing Stats</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400">Total Posts</span>
+                <span class="text-white font-medium">{sortedPosts.length}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400">Professional</span>
+                <span class="text-neon-purple font-medium">
+                  {sortedPosts.filter(post => post.data.tags.includes('professional')).length}
+                </span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400">Personal</span>
+                <span class="text-neon-pink font-medium">
+                  {sortedPosts.filter(post => post.data.tags.includes('personal')).length}
+                </span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400">Tags</span>
+                <span class="text-neon-blue font-medium">{allTags.length}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Posts -->
+  {featuredPosts.length > 0 && (
+    <section class="py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 fade-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+            Featured Posts
+          </h2>
+          <p class="text-xl text-gray-400">
+            Recent highlights from my writing journey.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredPosts.map((post, index) => (
+            <div class="fade-on-scroll" style={`animation-delay: ${index * 100}ms`}>
+              <PostCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                tags={post.data.tags}
+                slug={post.slug}
+                featured={index === 0}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All Posts -->
+  <section class="py-20 px-4 bg-dark-gray" id="all-posts">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+          All Posts
+        </h2>
+        <p class="text-xl text-gray-400">
+          Every piece of writing, from technical deep-dives to personal reflections.
+        </p>
+      </div>
+
+      {regularPosts.length > 0 ? (
+        <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {regularPosts.map((post, index) => (
+            <div class="fade-on-scroll post-card" data-tags={JSON.stringify(post.data.tags)} style={`animation-delay: ${index * 50}ms`}>
+              <PostCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                tags={post.data.tags}
+                slug={post.slug}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12 fade-on-scroll">
+          <p class="text-gray-400 text-lg">
+            More posts coming soon! Currently working on some exciting content to share.
+          </p>
+        </div>
+      )}
+
+      <!-- No Results Message (Hidden by default) -->
+      <div id="no-results" class="text-center py-12 hidden">
+        <div class="max-w-md mx-auto">
+          <svg class="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <h3 class="text-xl font-semibold text-gray-400 mb-2">No posts found</h3>
+          <p class="text-gray-500">Try adjusting your search or selected tags.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center fade-on-scroll">
+      <div class="bg-gradient-to-br from-neon-purple/10 to-neon-pink/10 rounded-2xl p-12 border border-gray-800">
+        <h2 class="text-3xl font-bold font-heading mb-4">
+          Stay Updated
+        </h2>
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          Want to be notified when I publish new posts? Let's connect and keep the conversation going.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contact" 
+            class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-200"
+          >
+            Get in Touch
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          <a 
+            href="/about" 
+            class="inline-flex items-center gap-2 px-8 py-4 border border-gray-600 text-gray-300 font-semibold rounded-lg hover:text-white hover:border-gray-500 transition-all duration-200"
+          >
+            Learn More About Me
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Client-side filtering functionality
+  function filterPosts(selectedTags: string[]) {
+    const posts = document.querySelectorAll('.post-card');
+    const noResults = document.getElementById('no-results');
+    let visibleCount = 0;
+
+    posts.forEach(post => {
+      const postElement = post as HTMLElement;
+      const postTags = JSON.parse(postElement.dataset.tags || '[]');
+      
+      if (selectedTags.length === 0 || selectedTags.some(tag => postTags.includes(tag))) {
+        postElement.style.display = 'block';
+        visibleCount++;
+      } else {
+        postElement.style.display = 'none';
+      }
+    });
+
+    // Show/hide no results message
+    if (noResults) {
+      if (visibleCount === 0 && selectedTags.length > 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+  }
+
+  // Listen for tag changes
+  window.addEventListener('tagsChanged', (event: CustomEvent) => {
+    filterPosts(event.detail);
+  });
+</script>
+
+<style>
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+  }
+</style>

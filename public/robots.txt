@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://nikos-dimitriadis.github.io/sitemap-index.xml
+
+# Allow search engines to crawl all content
+Allow: /professional
+Allow: /personal
+Allow: /writing
+Allow: /about
+Allow: /contact
+Allow: /posts/
+
+# No restrictions for this personal site
+# We want good indexing for portfolio and blog content

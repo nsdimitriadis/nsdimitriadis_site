@@ -1,0 +1,37 @@
+---
+title: "Lessons from Building Data Pipelines at Scale"
+description: "Hard-won insights from designing and maintaining data systems that process terabytes daily, including what I wish I'd known when starting out."
+pubDate: 2024-02-10
+tags: ["professional", "data-engineering", "architecture", "lessons-learned"]
+---
+
+After several years of building, breaking, and rebuilding data systems, I've collected some hard-won insights that I wish someone had shared with me earlier in my career. These aren't revolutionary ideas, but they're the kind of practical wisdom that only comes from dealing with production systems at 3 AM.
+
+## The Fundamentals That Actually Matter
+
+### Data Quality is a Product Feature, Not an Afterthought
+
+Early in my career, I treated data validation as something you bolt on at the end. Wrong. Data quality needs to be designed into your system from day one.
+
+**What this looks like in practice:**
+- Schema validation at ingestion points
+- Data freshness monitoring with alerting
+- Anomaly detection on key metrics
+- Clear data lineage tracking
+
+The cost of fixing bad data downstream is exponentially higher than preventing it upstream. I've seen teams spend months cleaning up issues that could have been caught with a few simple validation rules.
+
+### Idempotency is Your Best Friend
+
+If I could go back and tell my younger self one thing, it would be: "Make everything idempotent." Whether it's data pipelines, API calls, or batch jobs—design them so they can be run multiple times safely.
+
+```python
+# Bad: This will create duplicates if run twice
+def process_daily_sales():
+    sales_data = extract_sales_for_date(today)
+    insert_into_warehouse(sales_data)
+
+# Good: This handles reruns gracefully
+def process_daily_sales():
+    sales_data = extract_sales_for_date(today)
+    upsert_into_warehouse(sales_data, partition_key='date')

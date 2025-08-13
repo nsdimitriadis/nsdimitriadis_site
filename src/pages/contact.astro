@@ -1,0 +1,313 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Contact | Nikos Dimitriadis"
+  description="Get in touch with Nikos Dimitriadis - always open to interesting conversations about data engineering, technology, or life."
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] flex items-center justify-center px-4">
+    <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-transparent to-neon-pink/10"></div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6 animate-slide-up">
+        <span class="bg-gradient-to-r from-neon-purple via-neon-pink to-neon-blue bg-clip-text text-transparent">
+          Let's Connect
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in animation-delay-200">
+        Always open to interesting conversations about data engineering, technology, music, running, or life in general.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <!-- Contact Form -->
+        <div class="fade-on-scroll">
+          <div class="bg-medium-gray rounded-2xl p-8">
+            <h2 class="text-2xl font-bold font-heading mb-6 text-white">Send a Message</h2>
+            <form id="contact-form" class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
+                    Name *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    required
+                    class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-neon-purple focus:ring-1 focus:ring-neon-purple focus:outline-none transition-all duration-200"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+                    Email *
+                  </label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-neon-purple focus:ring-1 focus:ring-neon-purple focus:outline-none transition-all duration-200"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">
+                  Subject
+                </label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject"
+                  class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-neon-purple focus:ring-1 focus:ring-neon-purple focus:outline-none transition-all duration-200"
+                  placeholder="What's this about?"
+                />
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-300 mb-2">
+                  Message *
+                </label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="6" 
+                  required
+                  class="w-full px-4 py-3 bg-dark-gray border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-neon-purple focus:ring-1 focus:ring-neon-purple focus:outline-none transition-all duration-200 resize-vertical"
+                  placeholder="Tell me what's on your mind..."
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit"
+                class="w-full px-6 py-4 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold rounded-lg hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-neon-purple focus:ring-offset-2 focus:ring-offset-black"
+              >
+                Send Message
+              </button>
+            </form>
+            
+            <!-- Form Status Messages -->
+            <div id="form-success" class="hidden mt-4 p-4 bg-green-500/20 border border-green-500/30 rounded-lg">
+              <p class="text-green-400 text-sm">
+                <strong>Message sent!</strong> Thanks for reaching out. I'll get back to you soon.
+              </p>
+            </div>
+            
+            <div id="form-error" class="hidden mt-4 p-4 bg-red-500/20 border border-red-500/30 rounded-lg">
+              <p class="text-red-400 text-sm">
+                <strong>Oops!</strong> Something went wrong. Please try again or send me an email directly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Info & Social -->
+        <div class="space-y-8 fade-on-scroll">
+          <!-- Direct Contact -->
+          <div class="bg-medium-gray rounded-2xl p-8">
+            <h3 class="text-xl font-bold font-heading mb-6 text-white">Prefer Direct Contact?</h3>
+            
+            <div class="space-y-4">
+              <a 
+                href="mailto:hello@nikosdimitriadis.dev"
+                class="flex items-center gap-4 p-4 bg-dark-gray rounded-lg hover:bg-gray-600 transition-all duration-200 group"
+              >
+                <div class="w-12 h-12 bg-neon-purple/20 rounded-lg flex items-center justify-center group-hover:bg-neon-purple/30 transition-colors duration-200">
+                  <svg class="w-6 h-6 text-neon-purple" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white font-medium">Email</h4>
+                  <p class="text-gray-400 text-sm">hello@nikosdimitriadis.dev</p>
+                </div>
+              </a>
+
+              <a 
+                href="https://linkedin.com/in/nikos-dimitriadis"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-4 p-4 bg-dark-gray rounded-lg hover:bg-gray-600 transition-all duration-200 group"
+              >
+                <div class="w-12 h-12 bg-neon-blue/20 rounded-lg flex items-center justify-center group-hover:bg-neon-blue/30 transition-colors duration-200">
+                  <svg class="w-6 h-6 text-neon-blue" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white font-medium">LinkedIn</h4>
+                  <p class="text-gray-400 text-sm">Professional networking</p>
+                </div>
+              </a>
+
+              <a 
+                href="https://github.com/nikos-dimitriadis"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-4 p-4 bg-dark-gray rounded-lg hover:bg-gray-600 transition-all duration-200 group"
+              >
+                <div class="w-12 h-12 bg-silver/20 rounded-lg flex items-center justify-center group-hover:bg-silver/30 transition-colors duration-200">
+                  <svg class="w-6 h-6 text-silver" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white font-medium">GitHub</h4>
+                  <p class="text-gray-400 text-sm">Code and projects</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Response Time -->
+          <div class="bg-gradient-to-br from-neon-purple/10 to-neon-pink/10 rounded-2xl p-8 border border-gray-800">
+            <h3 class="text-xl font-bold font-heading mb-4 text-white">Response Time</h3>
+            <p class="text-gray-300 mb-4">
+              I typically respond within <strong class="text-neon-purple">24-48 hours</strong> during weekdays. 
+              For urgent matters, feel free to mention it in your message.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-gray-400">
+              <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              Currently accepting new connections
+            </div>
+          </div>
+
+          <!-- Topics I Love -->
+          <div class="bg-medium-gray rounded-2xl p-8">
+            <h3 class="text-xl font-bold font-heading mb-4 text-white">Love Chatting About</h3>
+            <div class="flex flex-wrap gap-2">
+              {[
+                'Data Engineering', 'Software Architecture', 'Python', 'Music Discovery',
+                'Trail Running', 'Coffee', 'Photography', 'Tech Leadership'
+              ].map((topic) => (
+                <span class="px-3 py-1 text-sm bg-dark-gray rounded-full text-gray-300 border border-gray-600">
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-4 bg-dark-gray">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 fade-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+          Common Questions
+        </h2>
+        <p class="text-xl text-gray-400">
+          A few things people often ask about.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-medium-gray rounded-xl p-6 fade-on-scroll">
+          <h3 class="text-lg font-semibold text-white mb-2">Are you available for consulting work?</h3>
+          <p class="text-gray-400">
+            Occasionally! I'm selective about projects but always interested in challenging data engineering problems. Feel free to reach out with details.
+          </p>
+        </div>
+
+        <div class="bg-medium-gray rounded-xl p-6 fade-on-scroll">
+          <h3 class="text-lg font-semibold text-white mb-2">Do you do speaking engagements?</h3>
+          <p class="text-gray-400">
+            Yes, I enjoy speaking about data engineering, system design, and technical leadership. Happy to discuss conference talks or meetup presentations.
+          </p>
+        </div>
+
+        <div class="bg-medium-gray rounded-xl p-6 fade-on-scroll">
+          <h3 class="text-lg font-semibold text-white mb-2">Can we grab coffee?</h3>
+          <p class="text-gray-400">
+            Absolutely! I'm always up for good coffee and great conversation. If you're in the area or visiting, let's connect.
+          </p>
+        </div>
+
+        <div class="bg-medium-gray rounded-xl p-6 fade-on-scroll">
+          <h3 class="text-lg font-semibold text-white mb-2">What about music recommendations?</h3>
+          <p class="text-gray-400">
+            One of my favorite topics! Send me what you're listening to lately, and I'll share some discoveries. Always looking for new sounds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Contact form handling
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const successMessage = document.getElementById('form-success');
+    const errorMessage = document.getElementById('form-error');
+
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Hide previous messages
+        successMessage?.classList.add('hidden');
+        errorMessage?.classList.add('hidden');
+        
+        // Get form data
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          subject: formData.get('subject'),
+          message: formData.get('message')
+        };
+        
+        // Disable submit button
+        const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        const originalText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        
+        try {
+          // In a real implementation, this would send to your contact form endpoint
+          // For now, we'll simulate the success
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          
+          // Show success message
+          successMessage?.classList.remove('hidden');
+          form.reset();
+          
+          // For demo purposes, log the form data
+          console.log('Contact form submitted:', data);
+          
+        } catch (error) {
+          // Show error message
+          errorMessage?.classList.remove('hidden');
+          console.error('Form submission error:', error);
+        } finally {
+          // Re-enable submit button
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { formatDate } from '@/utils/content';
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    pubDate: Date;
+    updatedDate?: Date;
+    tags: string[];
+    image?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, image } = frontmatter;
+---
+
+<BaseLayout title={title} description={description} image={image} article={true}>
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-12 text-center fade-on-scroll">
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4 bg-gradient-to-r from-neon-purple via-neon-pink to-neon-blue bg-clip-text text-transparent">
+        {title}
+      </h1>
+      <p class="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
+        {description}
+      </p>
+      <div class="flex items-center justify-center gap-6 text-sm text-gray-400">
+        <time datetime={pubDate.toISOString()}>
+          {formatDate(pubDate)}
+        </time>
+        {updatedDate && (
+          <span>
+            Updated: <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time>
+          </span>
+        )}
+      </div>
+      <div class="flex flex-wrap justify-center gap-2 mt-6">
+        {tags.map((tag) => (
+          <span class="px-3 py-1 text-xs bg-medium-gray rounded-full text-gray-300 border border-gray-600">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <div class="prose prose-invert prose-lg max-w-none fade-on-scroll">
+      <slot />
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-800 fade-on-scroll">
+      <div class="text-center">
+        <p class="text-gray-400 mb-4">
+          Thanks for reading! Feel free to reach out if you have any thoughts or questions.
+        </p>
+        <a 
+          href="/contact" 
+          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-medium rounded-lg hover:scale-105 transition-transform duration-200"
+        >
+          Get in touch
+        </a>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>

@@ -1,0 +1,265 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="About | Nikos Dimitriadis"
+  description="Learn more about Nikos Dimitriadis - data engineer, software engineer, and human being with diverse interests."
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] flex items-center justify-center px-4">
+    <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-transparent to-neon-pink/10"></div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6 animate-slide-up">
+        <span class="bg-gradient-to-r from-neon-purple via-neon-pink to-neon-blue bg-clip-text text-transparent">
+          About Me
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in animation-delay-200">
+        The story of a data engineer who believes in the power of both technology and human connection.
+      </p>
+    </div>
+  </section>
+
+  <!-- Two-Column Bio -->
+  <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <!-- Professional Bio -->
+        <div class="fade-on-scroll">
+          <div class="mb-8">
+            <div class="w-12 h-12 bg-neon-purple/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-neon-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold font-heading mb-6 text-white">Professional Journey</h2>
+          </div>
+          
+          <div class="prose prose-invert prose-lg max-w-none">
+            <p>
+              I'm a data engineer and software engineer with a passion for building elegant, scalable solutions that turn complex data challenges into clear insights and actionable outcomes.
+            </p>
+            
+            <p>
+              My journey started with a curiosity about how data flows through systems and evolved into a deep expertise in designing and implementing data architectures that can handle everything from real-time streaming to massive batch processing workloads.
+            </p>
+            
+            <p>
+              What drives me professionally is the intersection of technical excellence and practical impact. I believe the best data systems are those that not only perform well but also empower teams to make better decisions faster.
+            </p>
+            
+            <h3>What I Do Best:</h3>
+            <ul>
+              <li>Architecting scalable data pipelines and infrastructure</li>
+              <li>Building real-time analytics and streaming systems</li>
+              <li>Designing data lakes and warehouses for analytical workloads</li>
+              <li>Leading technical teams through complex migrations</li>
+              <li>Bridging the gap between data and business outcomes</li>
+            </ul>
+            
+            <p>
+              I'm always excited to tackle new challenges and believe that the best solutions come from understanding both the technical landscape and the human needs behind the requirements.
+            </p>
+          </div>
+        </div>
+
+        <!-- Personal Bio -->
+        <div class="fade-on-scroll">
+          <div class="mb-8">
+            <div class="w-12 h-12 bg-neon-pink/20 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold font-heading mb-6 text-white">Personal Side</h2>
+          </div>
+          
+          <div class="prose prose-invert prose-lg max-w-none">
+            <p>
+              Beyond the world of data pipelines and code repositories, I'm someone who finds joy in the rhythm of music, the meditative quality of a long run, and the perfect extraction of a pour-over coffee.
+            </p>
+            
+            <p>
+              <strong>Music</strong> is my constant companion. I'm always discovering new artists and sounds, from the intricate harmonies of jazz fusion to the atmospheric textures of ambient electronic music. My playlists are curated with the same attention to detail I bring to data architecture.
+            </p>
+            
+            <p>
+              <strong>Running</strong> keeps me grounded and often provides my best thinking time. There's something about mile 5 where complex problems suddenly become clear. I'm training for my next half marathon and always looking for new trail routes to explore.
+            </p>
+            
+            <p>
+              <strong>Coffee culture</strong> fascinates me – the science behind extraction, the stories behind single-origin beans, and the ritual of making something perfect. I might be slightly obsessed with pour-over techniques.
+            </p>
+            
+            <p>
+              <strong>Photography</strong> helps me see the world differently. I prefer film cameras for their authentic feel and the way they slow down the process of capturing a moment.
+            </p>
+            
+            <p>
+              What ties all these interests together is a love for craftsmanship, attention to detail, and the belief that the process is just as important as the outcome. Whether I'm optimizing a data pipeline or perfecting a coffee brew, it's about finding that sweet spot where art meets science.
+            </p>
+            
+            <p>
+              I believe in work-life integration rather than balance – letting the creativity and mindfulness from personal pursuits inform professional work, and vice versa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values & Philosophy -->
+  <section class="py-20 px-4 bg-dark-gray">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 fade-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+          Values & Philosophy
+        </h2>
+        <p class="text-xl text-gray-400">
+          The principles that guide both my professional work and personal life.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center fade-on-scroll">
+          <div class="w-16 h-16 bg-neon-purple/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-neon-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-4 text-white">Craftsmanship</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Whether writing code or brewing coffee, I believe in doing things well. Details matter, and excellence is a habit, not an accident.
+          </p>
+        </div>
+
+        <div class="text-center fade-on-scroll">
+          <div class="w-16 h-16 bg-neon-pink/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-4 text-white">Human-Centered</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Technology serves people, not the other way around. The best solutions are those that make life better for the humans using them.
+          </p>
+        </div>
+
+        <div class="text-center fade-on-scroll">
+          <div class="w-16 h-16 bg-neon-blue/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-4 text-white">Continuous Growth</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Every day is an opportunity to learn something new. Whether it's a new technology or a different perspective on an old problem.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 fade-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+          Journey So Far
+        </h2>
+        <p class="text-xl text-gray-400">
+          Key moments that shaped who I am today.
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-purple via-neon-pink to-neon-blue"></div>
+        
+        <div class="space-y-12">
+          <div class="relative pl-12 fade-on-scroll">
+            <div class="absolute left-2 top-2 w-4 h-4 bg-neon-purple rounded-full border-4 border-black"></div>
+            <div class="bg-medium-gray rounded-xl p-6">
+              <div class="flex items-center gap-4 mb-2">
+                <span class="text-sm px-3 py-1 bg-neon-purple/20 text-neon-purple rounded-full">2022 - Present</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Senior Data Engineer Era</h3>
+              <p class="text-gray-400">Leading data infrastructure initiatives, mentoring team members, and solving complex scaling challenges.</p>
+            </div>
+          </div>
+
+          <div class="relative pl-12 fade-on-scroll">
+            <div class="absolute left-2 top-2 w-4 h-4 bg-neon-pink rounded-full border-4 border-black"></div>
+            <div class="bg-medium-gray rounded-xl p-6">
+              <div class="flex items-center gap-4 mb-2">
+                <span class="text-sm px-3 py-1 bg-neon-pink/20 text-neon-pink rounded-full">2020 - 2022</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Startup Adventure</h3>
+              <p class="text-gray-400">Built data infrastructure from scratch at a fast-growing startup. Learned to move fast and make every decision count.</p>
+            </div>
+          </div>
+
+          <div class="relative pl-12 fade-on-scroll">
+            <div class="absolute left-2 top-2 w-4 h-4 bg-neon-blue rounded-full border-4 border-black"></div>
+            <div class="bg-medium-gray rounded-xl p-6">
+              <div class="flex items-center gap-4 mb-2">
+                <span class="text-sm px-3 py-1 bg-neon-blue/20 text-neon-blue rounded-full">2018 - 2020</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Data Discovery</h3>
+              <p class="text-gray-400">First serious role working with data pipelines. Discovered the art of turning messy data into clean, actionable insights.</p>
+            </div>
+          </div>
+
+          <div class="relative pl-12 fade-on-scroll">
+            <div class="absolute left-2 top-2 w-4 h-4 bg-silver rounded-full border-4 border-black"></div>
+            <div class="bg-medium-gray rounded-xl p-6">
+              <div class="flex items-center gap-4 mb-2">
+                <span class="text-sm px-3 py-1 bg-silver/20 text-silver rounded-full">Earlier</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">The Beginning</h3>
+              <p class="text-gray-400">Started with a computer science degree and an insatiable curiosity about how systems work at scale.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect -->
+  <section class="py-20 px-4 bg-dark-gray">
+    <div class="max-w-4xl mx-auto text-center fade-on-scroll">
+      <h2 class="text-3xl font-bold font-heading mb-4">
+        Let's Connect
+      </h2>
+      <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+        Whether you want to discuss data architecture, share music recommendations, or just have a great conversation over coffee.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/contact" 
+          class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-200"
+        >
+          Get in Touch
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+        <a 
+          href="/writing" 
+          class="inline-flex items-center gap-2 px-8 py-4 border border-gray-600 text-gray-300 font-semibold rounded-lg hover:text-white hover:border-gray-500 transition-all duration-200"
+        >
+          Read My Thoughts
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+  }
+</style>
