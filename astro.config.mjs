@@ -5,7 +5,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
 
-const REPLIT_HOST = 'c584ee27-3a6a-44fc-b770-b7c9d728653a-00-zjnq8vkgavcp.worf.replit.dev';
+const REPLIT_HOST = 'c611b145-39b5-4b6f-9fd3-5e1ef5ed92c1-00-e4c2l78mdzov.janeway.replit.dev';
 
 export default defineConfig({
   site: 'https://nikos-dimitriadis.github.io',
