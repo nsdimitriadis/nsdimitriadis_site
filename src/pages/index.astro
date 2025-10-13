@@ -4,14 +4,11 @@ import FlipTile from '@/components/FlipTile';
 import TechCarousel from '@/components/TechCarousel';
 import { technologies } from '@/data/technologies';
 
-const base = import.meta.env.BASE_URL;
-const withBase = (p: string) => `${base}${p.replace(/^\//, '')}`;
-
 const tiles = [
-  { title: 'CV', href: withBase('/cv'), gradient: 'from-neon-purple to-neon-pink' },
-  { title: 'Sports', href: withBase('/sports'), gradient: 'from-neon-blue to-neon-purple' },
-  { title: 'Music', href: withBase('/music'), gradient: 'from-neon-pink to-neon-purple' },
-  { title: 'Contact', href: withBase('/contact'), gradient: 'from-silver to-neon-blue' },
+  { title: 'CV', href: '/cv', gradient: 'from-neon-purple to-neon-pink' },
+  { title: 'Sports', href: '/sports', gradient: 'from-neon-blue to-neon-purple' },
+  { title: 'Music', href: '/music', gradient: 'from-neon-pink to-neon-purple' },
+  { title: 'Contact', href: '/contact', gradient: 'from-silver to-neon-blue' },
 ];
 ---
 

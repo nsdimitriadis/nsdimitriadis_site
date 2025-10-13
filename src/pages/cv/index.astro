@@ -37,7 +37,7 @@ import { cvEntries } from '@/data/cvEntries';
 
               <!-- Content -->
               <a 
-                href={`/cv/${entry.slug}`}
+                href={`${import.meta.env.BASE_URL}cv/${entry.slug}`}
                 class="block ml-20 md:ml-0 md:pl-0 group"
               >
                 <div class={`bg-medium-gray border border-gray-800 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-neon-purple/50 hover:scale-105 ${
@@ -47,7 +47,7 @@ import { cvEntries } from '@/data/cvEntries';
                   {entry.logoSrc && (
                     <div class="mb-4 flex items-center gap-3">
                       <img 
-                        src={entry.logoSrc} 
+                        src={`${import.meta.env.BASE_URL}${entry.logoSrc.replace(/^\//, '')}`} 
                         alt={`${entry.title} logo`} 
                         class="h-8 w-auto object-contain"
                       />
