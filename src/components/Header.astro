@@ -1,11 +1,13 @@
 ---
 const currentPath = Astro.url.pathname;
 
+const withBase = (p: string) => new URL(p, Astro.url).pathname;
+
 const navItems = [
-  { href: '/cv', label: 'CV' },
-  { href: '/sports', label: 'Sports' },
-  { href: '/music', label: 'Music' },
-  { href: '/contact', label: 'Contact' }
+  { href: withBase('/cv'), label: 'CV' },
+  { href: withBase('/sports'), label: 'Sports' },
+  { href: withBase('/music'), label: 'Music' },
+  { href: withBase('/contact'), label: 'Contact' }
 ];
 ---
 
@@ -13,7 +15,7 @@ const navItems = [
   <nav class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
       <!-- Logo/Monogram -->
-      <a href="/" class="text-2xl font-bold font-heading hover:text-neon-purple transition-colors duration-200">
+      <a href={withBase('/')} class="text-2xl font-bold font-heading hover:text-neon-purple transition-colors duration-200">
         ND
       </a>
 

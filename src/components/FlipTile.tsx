@@ -34,7 +34,7 @@ export default function FlipTile({
 
   return (
     <a
-      href={href}
+      href={withBase(href)}
       className="flip-tile-container group block"
       style={{ perspective: '1000px' }}
       onMouseEnter={() => setIsFlipped(true)}
