@@ -37,7 +37,7 @@ export const cvEntries: CvEntry[] = [
     description: 'Contributing to the future of decentralized networks',
     gradient: 'from-neon-pink to-neon-purple',
     logoSrc: '/images/logos/projectagora.png',
-    tileImage: '/images/cv/projectagora,png',
+    tileImage: '/images/cv/projectagora.png',
     coverImage: '/images/cv/projectagora.png'
   },
   {

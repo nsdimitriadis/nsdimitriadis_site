@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { withBase } from '../utils/path';
 
 interface TechnologyItem {
   label: string;
@@ -56,7 +57,7 @@ export default function TechCarousel({ items }: TechCarouselProps) {
           >
             {item.icon && (
               <div className="w-5 h-5 flex items-center justify-center">
-                <img src={item.icon} alt="" className="w-full h-full object-contain" />
+                <img src={withBase(item.icon)} alt="" className="w-full h-full object-contain" />
               </div>
             )}
             <span className="text-sm font-medium text-gray-300 whitespace-nowrap">

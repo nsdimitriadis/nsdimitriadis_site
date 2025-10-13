@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { withBase } from '../utils/path';
 
 interface FlipTileProps {
   title: string;
@@ -58,7 +59,7 @@ export default function FlipTile({
         >
           <div className={`absolute inset-0 bg-gradient-to-br ${gradient} ${gradientOpacity} transition-opacity duration-300`} />
           {frontImage ? (
-            <img src={frontImage} alt={title} className="w-full h-full object-cover" />
+            <img src={withBase(frontImage)} alt={title} className="w-full h-full object-cover" />
           ) : (
             <h3 className="text-3xl font-bold font-heading text-white z-10">{title}</h3>
           )}
@@ -75,7 +76,7 @@ export default function FlipTile({
         >
           {backImage ? (
             <>
-              <img src={backImage} alt={`${title} preview`} className="w-full h-full object-cover opacity-60" />
+              <img src={withBase(backImage)} alt={`${title} preview`} className="w-full h-full object-cover opacity-60" />
               <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                 <span className="text-2xl font-semibold text-white">{title}</span>
               </div>
