@@ -1,7 +1,8 @@
 ---
 const currentPath = Astro.url.pathname;
 
-const withBase = (p: string) => new URL(p, Astro.url).pathname;
+const base = import.meta.env.BASE_URL;
+const withBase = (p: string) => `${base}${p.replace(/^\//, '')}`;
 
 const navItems = [
   { href: withBase('/cv'), label: 'CV' },

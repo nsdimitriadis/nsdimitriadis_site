@@ -4,7 +4,8 @@ import FlipTile from '@/components/FlipTile';
 import TechCarousel from '@/components/TechCarousel';
 import { technologies } from '@/data/technologies';
 
-const withBase = (p: string) => new URL(p, Astro.url).pathname;
+const base = import.meta.env.BASE_URL;
+const withBase = (p: string) => `${base}${p.replace(/^\//, '')}`;
 
 const tiles = [
   { title: 'CV', href: withBase('/cv'), gradient: 'from-neon-purple to-neon-pink' },
