@@ -220,6 +220,6 @@ MIT License - feel free to use this template for your own portfolio!
 
 Built with care by Nikos Dimitriadis
 
-- Email: hello@nikosdimitriadis.dev
-- LinkedIn: [nikos-dimitriadis](https://linkedin.com/in/nikos-dimitriadis)
-- GitHub: [nikos-dimitriadis](https://github.com/nikos-dimitriadis)
+- Email: nsdimitriadis@gmail.com
+- LinkedIn: [nikos-dimitriadis](https://linkedin.com/in/nsdimitr)
+- GitHub: [nikos-dimitriadis](https://github.com/nsdimitriadis)
