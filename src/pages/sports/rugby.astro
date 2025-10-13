@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Rugby - Nikos Dimitriadis"
+  description="My passion for rugby and the lessons learned on the field"
+  article={true}
+>
+  <article class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="mb-8">
+        <a href="/sports" class="text-neon-purple hover:text-neon-pink transition-colors duration-200 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to Sports
+        </a>
+      </nav>
+
+      <!-- Hero -->
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6">
+          Rugby
+        </h1>
+        <div class="w-full h-64 md:h-96 bg-gradient-to-br from-neon-purple/20 to-neon-pink/20 rounded-2xl mb-8 flex items-center justify-center border border-gray-800">
+          <span class="text-gray-500 text-lg">[ Hero Image Placeholder ]</span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-invert max-w-none">
+        <p class="text-xl text-gray-400 leading-relaxed mb-8">
+          [Placeholder: Add content about your passion for rugby, the teams you've played for, memorable moments, and what the sport means to you.]
+        </p>
+        
+        <h2>The Game</h2>
+        <p>
+          [Add detailed content about your rugby journey and experiences]
+        </p>
+
+        <h2>Key Moments</h2>
+        <p>
+          [Share memorable moments and experiences from rugby]
+        </p>
+
+        <h2>Lessons Learned</h2>
+        <p>
+          [Describe what rugby has taught you and how it influences your life]
+        </p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

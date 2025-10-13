@@ -1,9 +1,9 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* CSS Variables for consistent theming */
 :root {
@@ -297,6 +297,37 @@ input:focus, textarea:focus, select:focus {
 
 .prose em {
   color: #c0c0c0;
+}
+
+/* FlipTile animations */
+.flip-tile-inner {
+  transform-style: preserve-3d;
+}
+
+.flip-tile-flipped {
+  transform: rotateY(180deg);
+}
+
+@media (hover: none) {
+  .flip-tile-flipped {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-tile-inner {
+    transition: transform 0.01ms !important;
+  }
+  
+  .flip-tile-flipped {
+    transform: scale(1.05) !important;
+  }
+}
+
+.flip-tile-container:focus {
+  outline: 2px solid var(--color-neon-purple);
+  outline-offset: 4px;
+  border-radius: 1rem;
 }
 
 /* Print styles */

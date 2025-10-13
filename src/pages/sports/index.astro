@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FlipTile from '@/components/FlipTile';
+
+const sports = [
+  { 
+    title: 'Rugby', 
+    href: '/sports/rugby',
+    gradient: 'from-neon-purple to-neon-pink'
+  },
+  { 
+    title: 'Football', 
+    href: '/sports/football',
+    gradient: 'from-neon-blue to-neon-purple'
+  },
+  { 
+    title: 'Basketball', 
+    href: '/sports/basketball',
+    gradient: 'from-neon-pink to-silver'
+  },
+];
+---
+
+<BaseLayout 
+  title="Sports - Nikos Dimitriadis"
+  description="My passion for sports and athletic pursuits"
+>
+  <!-- Header -->
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6 animate-fade-in">
+        Sports & Athletics
+      </h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 100ms">
+        Beyond the code, I find balance and energy through sports. Each discipline teaches different lessons about teamwork, strategy, and perseverance.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sports Tiles -->
+  <section class="py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {sports.map((sport, index) => (
+          <div class="animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
+            <FlipTile
+              client:load
+              title={sport.title}
+              href={sport.href}
+              gradient={sport.gradient}
+              variant="bright"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

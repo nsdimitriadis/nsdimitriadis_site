@@ -1,14 +1,10 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/professional', label: 'Professional' },
-  { href: '/personal', label: 'Personal' },
-  { href: '/writing', label: 'Writing' },
-  { href: '/about', label: 'About' },
+  { href: '/cv', label: 'CV' },
+  { href: '/sports', label: 'Sports' },
+  { href: '/music', label: 'Music' },
   { href: '/contact', label: 'Contact' }
 ];
 ---
@@ -16,8 +12,8 @@ const navItems = [
 <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
   <nav class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-      <!-- Logo/Brand -->
-      <a href="/" class="text-xl font-bold font-heading hover:text-neon-purple transition-colors duration-200">
+      <!-- Logo/Monogram -->
+      <a href="/" class="text-2xl font-bold font-heading hover:text-neon-purple transition-colors duration-200">
         ND
       </a>
 
@@ -27,7 +23,7 @@ const navItems = [
           <a 
             href={item.href}
             class={`text-sm font-medium transition-colors duration-200 relative group ${
-              currentPath === item.href 
+              currentPath.startsWith(item.href)
                 ? 'text-neon-purple' 
                 : 'text-gray-300 hover:text-white'
             }`}
@@ -57,7 +53,7 @@ const navItems = [
           <a 
             href={item.href}
             class={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-              currentPath === item.href 
+              currentPath.startsWith(item.href)
                 ? 'text-neon-purple bg-medium-gray' 
                 : 'text-gray-300 hover:text-white hover:bg-medium-gray'
             }`}
@@ -71,7 +67,6 @@ const navItems = [
 </header>
 
 <script>
-  // Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
@@ -80,9 +75,8 @@ const navItems = [
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+      if (!mobileMenuButton.contains(e.target as Node) && !mobileMenu.contains(e.target as Node)) {
         mobileMenu.classList.add('hidden');
       }
     });

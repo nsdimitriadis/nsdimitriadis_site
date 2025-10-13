@@ -1,0 +1,194 @@
+You are Replit, a code generation tool. The Astro 5 + Tailwind + React site has already been simplified per the previous prompt (Home, CV, Sports, Music, Contact). Apply the following updates. Keep accessibility, responsiveness, and minimal JS. Do not reintroduce removed sections.
+
+GOALS (THIS ROUND)
+1) Contact page: remove the “Send me a message” form/section entirely.
+2) Carousel: show me exactly where to place icons/images and how to add them.
+3) Sports tiles: brighten them to match the Music tiles’ brightness/contrast.
+4) CV tiles: add space for company logos; in the article pages place a hero image ABOVE the title.
+
+GLOBAL
+- Keep the header with links to Home, CV, Sports, Music, Contact.
+- Keep the dark/neon theme and reduced-motion fallbacks.
+- Do not re-add blog/search/tags/extra routes.
+
+CHANGES TO APPLY
+
+A) Contact page — remove form
+- File: src/pages/contact.astro
+- Remove the “send me a message” section (the entire contact form). Keep:
+  - Email (click-to-copy or mailto).
+  - Social icons/links (LinkedIn/GitHub). Ensure consistent styling with theme.
+- Acceptance: contact page renders with no form; only email + social links remain.
+
+B) Technologies carousel — explicit image locations and usage
+- Component: src/components/TechCarousel.{astro|tsx}
+- Data source: create src/data/technologies.ts with a simple array:
+  (If this file already exists, align to this exact shape.)
+
+```ts
+// src/data/technologies.ts
+export type TechnologyItem = {
+  label: string;
+  icon?: string; // path under /public
+};
+
+export const technologies: TechnologyItem[] = [
+  { label: 'Python', icon: '/images/tech/python.svg' },
+  { label: 'Airflow', icon: '/images/tech/airflow.svg' },
+  { label: 'SQL', icon: '/images/tech/sql.svg' },
+  { label: 'dbt', icon: '/images/tech/dbt.svg' },
+  // add more as needed
+];
+```
+
+- Place icon files here (create if missing):
+  - public/images/tech/ (e.g., python.svg, airflow.svg, sql.svg, dbt.svg)
+- The carousel must render each item’s icon (if provided) to the left of the label, with sensible sizing (e.g., h-5 w-5).
+- Document this usage in README (short snippet on how to add a new tech with an icon path).
+- Acceptance: adding an item `{ label: 'X', icon: '/images/tech/x.svg' }` shows icon+label immediately on Home and CV.
+
+C) Sports tiles — brighten to match Music
+- Reuse the same FlipTile styling variant used on Music (or introduce a prop).
+- Component: src/components/FlipTile.{astro|tsx}
+  - Add prop: variant: 'default' | 'bright' (default = 'default').
+  - For variant='bright', increase base surface and hover contrast (e.g., bg-white/10 → bg-white/15; hover bg-white/20 → /25; slightly stronger ring/shadow). Respect reduced-motion.
+- Usage:
+  - File: src/pages/sports/index.astro — set all three tiles (Rugby, Football, Basketball) to variant='bright'.
+  - File: src/pages/music/index.astro — keep tiles bright (match Sports).
+- Acceptance: Sports tiles appear as bright as Music tiles, with consistent hover/focus polish.
+
+D) CV tiles — add logo area; articles with hero image above title
+1. Timeline tiles
+- File: src/pages/cv/index.astro (or the CV timeline component/data used there)
+- Data: create/align src/data/cvEntries.ts with logo + images:
+
+```ts
+// src/data/cvEntries.ts
+export type CvEntry = {
+  date: string;
+  title: string;
+  slug: string;            // matches the article route
+  logoSrc?: string;        // small logo path under /public
+  tileImage?: string;      // image for tile hover/expand
+  coverImage?: string;     // hero image used in the article page
+};
+
+export const cvEntries: CvEntry[] = [
+  {
+    date: 'June 2025',
+    title: "Papercup's Orchestrator",
+    slug: 'papercup-orchestrator',
+    logoSrc: '/images/logos/papercup.svg',
+    tileImage: '/images/cv/papercup-tile.jpg',
+    coverImage: '/images/cv/papercup-hero.jpg'
+  },
+  {
+    date: 'November 2022',
+    title: "Made.com's Secret Weapon",
+    slug: 'madecom-secret-weapon',
+    logoSrc: '/images/logos/madecom.svg',
+    tileImage: '/images/cv/madecom-tile.jpg',
+    coverImage: '/images/cv/madecom-hero.jpg'
+  },
+  {
+    date: 'November 2021',
+    title: "Project Agora's Ant Worker",
+    slug: 'project-agora-ant-worker',
+    logoSrc: '/images/logos/project-agora.svg',
+    tileImage: '/images/cv/project-agora-tile.jpg',
+    coverImage: '/images/cv/project-agora-hero.jpg'
+  },
+  {
+    date: 'June 2019',
+    title: "Neurocom's rising star",
+    slug: 'neurocom-rising-star',
+    logoSrc: '/images/logos/neurocom.svg',
+    tileImage: '/images/cv/neurocom-tile.jpg',
+    coverImage: '/images/cv/neurocom-hero.jpg'
+  }
+];
+```
+
+- Place assets in:
+  - public/images/logos/ (company logos, preferably SVG)
+  - public/images/cv/ (tile and hero images)
+- Tile UI requirements:
+  - Show a small logo area (top-left or top-center) with the company logo if provided.
+  - Maintain the existing hover expand/tilt. On expand, show room for 30–50 word summary (placeholder).
+  - Clicking the tile navigates to `/cv/[slug]`.
+
+2. Article pages
+- Route: src/pages/cv/[slug].astro (or .mdx)
+- Render order:
+  - Hero image (coverImage) at the top, full-width within content max-width.
+  - Title below the hero image.
+  - Optional small logo near the title (left of title or in a meta row).
+  - Body area for me to write more content later.
+- If using MDX frontmatter, support:
+
+```mdx
+---
+title: "Papercup's Orchestrator"
+slug: "papercup-orchestrator"
+coverImage: "/images/cv/papercup-hero.jpg"
+logoSrc: "/images/logos/papercup.svg"
+---
+```
+
+- Otherwise, derive from cvEntries by slug.
+- Acceptance: Each CV article shows the hero image above the title, with space for long-form text.
+
+E) Image placeholders — how I will use them
+- Storage locations to create (if missing):
+  - public/images/tech/         # carousel icons (SVG or PNG)
+  - public/images/tiles/        # generic tile images (Sports/Music) if needed
+  - public/images/logos/        # company logos (SVG preferred)
+  - public/images/cv/           # CV tile and hero images (JPG/PNG)
+- Referencing:
+  - Use absolute paths from /public, e.g., '/images/tech/python.svg'.
+- README usage guide (add/append):
+  - “How to add a tech to the carousel”:
+    1) Drop the icon into public/images/tech/.
+    2) Add `{ label: 'X', icon: '/images/tech/x.svg' }` to `src/data/technologies.ts`.
+  - “How to update Sports/Music tiles”:
+    1) Place images in public/images/tiles/.
+    2) Pass `backImage="/images/tiles/rugby.jpg"` (or similar) to FlipTile on the page.
+  - “How to add/update CV entries and images”:
+    1) Logos → public/images/logos/, hero/tile images → public/images/cv/.
+    2) Update `src/data/cvEntries.ts` with `logoSrc`, `tileImage`, `coverImage`.
+    3) The article page will use `coverImage` above the title automatically (or via MDX frontmatter if using MDX).
+
+IMPLEMENTATION NOTES
+- FlipTile prop API (ensure or update):
+  - `href: string`
+  - `frontLabel: string`
+  - `backImage?: string`
+  - `variant?: 'default' | 'bright'`  // new; bright increases contrast/brightness
+- Sports page usage example (apply variant='bright'):
+
+```astro
+<!-- src/pages/sports/index.astro -->
+<FlipTile href="/sports/rugby" frontLabel="Rugby" backImage="/images/tiles/rugby.jpg" variant="bright" />
+<FlipTile href="/sports/football" frontLabel="Football" backImage="/images/tiles/football.jpg" variant="bright" />
+<FlipTile href="/sports/basketball" frontLabel="Basketball" backImage="/images/tiles/basketball.jpg" variant="bright" />
+```
+
+- Carousel usage:
+
+```astro
+---
+// src/pages/index.astro (and src/pages/cv/index.astro)
+import { technologies } from '../../data/technologies';
+import TechCarousel from '../../components/TechCarousel.astro';
+---
+<TechCarousel items={technologies} />
+```
+
+ACCEPTANCE CRITERIA
+- Contact page has no form; only email + social links remain.
+- Carousel reads from `src/data/technologies.ts`, rendering optional icons from `/public/images/tech/*`.
+- Sports tiles are visually brighter and consistent with Music tiles; implemented via `variant="bright"`.
+- CV tiles show company logos when provided and link to articles.
+- CV articles display a hero image ABOVE the title, then body content.
+- README includes concise instructions on where to place images and how to reference them.
+- No reintroduction of removed sections/routes.

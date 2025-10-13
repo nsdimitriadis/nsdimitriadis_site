@@ -1,150 +1,58 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/Hero.astro';
-import PostCard from '@/components/PostCard.astro';
-import { getCollection } from 'astro:content';
-import { formatDate } from '@/utils/content';
+import FlipTile from '@/components/FlipTile';
+import TechCarousel from '@/components/TechCarousel';
+import { technologies } from '@/data/technologies';
 
-// Get latest posts
-const allPosts = await getCollection('posts');
-const latestPosts = allPosts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const tiles = [
+  { title: 'CV', href: '/cv', gradient: 'from-neon-purple to-neon-pink' },
+  { title: 'Sports', href: '/sports', gradient: 'from-neon-blue to-neon-purple' },
+  { title: 'Music', href: '/music', gradient: 'from-neon-pink to-neon-purple' },
+  { title: 'Contact', href: '/contact', gradient: 'from-silver to-neon-blue' },
+];
 ---
 
-<BaseLayout>
+<BaseLayout 
+  title="Nikos Dimitriadis - Data Engineer & Portfolio"
+  description="Personal portfolio showcasing my work as a Data Engineer and Software Engineer."
+>
   <!-- Hero Section -->
-  <Hero 
-    title="Nikos Dimitriadis"
-    subtitle="Data Engineer & Software Engineer"
-    description="Building elegant solutions at the intersection of data and technology. Explore my professional work or dive into my personal interests."
-    cta={{
-      text: "View Professional Work",
-      href: "/professional"
-    }}
-    secondaryCta={{
-      text: "Explore Personal Side",
-      href: "/personal"
-    }}
-    gradient={true}
-  />
+  <section class="min-h-[60vh] flex items-center justify-center px-4 pt-20">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="text-5xl md:text-7xl font-bold font-heading mb-6 animate-fade-in">
+        <span class="gradient-text">Nikos Dimitriadis</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto animate-fade-in" style="animation-delay: 100ms">
+        Data Engineer crafting elegant solutions at the intersection of data and technology
+      </p>
+    </div>
+  </section>
 
-  <!-- Dual Paths Section -->
+  <!-- Tiles Section -->
   <section class="py-20 px-4">
     <div class="max-w-6xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12">
-        <!-- Professional Path -->
-        <div class="bg-gradient-to-br from-neon-purple/10 to-transparent rounded-2xl p-8 border border-gray-800 hover:border-neon-purple/30 transition-all duration-300 fade-on-scroll group">
-          <div class="mb-6">
-            <div class="w-12 h-12 bg-neon-purple/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
-              <svg class="w-6 h-6 text-neon-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <h2 class="text-2xl font-bold font-heading mb-4">Professional</h2>
-            <p class="text-gray-400 mb-6">
-              Dive into my professional world of data engineering and software development. Explore projects, insights, and technical expertise.
-            </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {tiles.map((tile, index) => (
+          <div class="animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
+            <FlipTile
+              client:load
+              title={tile.title}
+              href={tile.href}
+              gradient={tile.gradient}
+            />
           </div>
-          <a 
-            href="/professional" 
-            class="inline-flex items-center gap-2 text-neon-purple hover:text-neon-pink transition-colors duration-200 font-medium"
-          >
-            Explore Professional Work
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Personal Path -->
-        <div class="bg-gradient-to-br from-neon-pink/10 to-transparent rounded-2xl p-8 border border-gray-800 hover:border-neon-pink/30 transition-all duration-300 fade-on-scroll group">
-          <div class="mb-6">
-            <div class="w-12 h-12 bg-neon-pink/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
-              <svg class="w-6 h-6 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </div>
-            <h2 class="text-2xl font-bold font-heading mb-4">Personal</h2>
-            <p class="text-gray-400 mb-6">
-              Get to know the person behind the code. Music, sports, thoughts, and stories that shape my perspective on life and work.
-            </p>
-          </div>
-          <a 
-            href="/personal" 
-            class="inline-flex items-center gap-2 text-neon-pink hover:text-neon-purple transition-colors duration-200 font-medium"
-          >
-            Discover Personal Side
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Latest Writing -->
-  {latestPosts.length > 0 && (
-    <section class="py-20 px-4 bg-dark-gray">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12 fade-on-scroll">
-          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
-            Latest Writing
-          </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            Thoughts, insights, and stories from both my professional and personal journey.
-          </p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {latestPosts.map((post, index) => (
-            <div class="fade-on-scroll" style={`animation-delay: ${index * 100}ms`}>
-              <PostCard
-                title={post.data.title}
-                description={post.data.description}
-                pubDate={post.data.pubDate}
-                tags={post.data.tags}
-                slug={post.slug}
-                featured={index === 0}
-              />
-            </div>
-          ))}
-        </div>
-
-        <div class="text-center mt-12 fade-on-scroll">
-          <a 
-            href="/writing" 
-            class="inline-flex items-center gap-2 px-6 py-3 bg-medium-gray text-white font-medium rounded-lg hover:bg-gray-600 transition-all duration-200 hover:scale-105"
-          >
-            View All Posts
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- Quick Connect -->
-  <section class="py-20 px-4">
-    <div class="max-w-4xl mx-auto text-center fade-on-scroll">
-      <h2 class="text-3xl font-bold font-heading mb-4">
-        Let's Connect
+  <!-- Technologies Carousel -->
+  <section class="py-20 px-4 bg-dark-gray">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold font-heading text-center mb-12 fade-on-scroll">
+        Technologies & Tools
       </h2>
-      <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-        Whether you're interested in collaborating on a project, discussing data engineering, or just want to chat about music and running.
-      </p>
-      <a 
-        href="/contact" 
-        class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-200"
-      >
-        Get in Touch
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-        </svg>
-      </a>
+      <TechCarousel client:load items={technologies} />
     </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TechCarousel from '@/components/TechCarousel';
+import { technologies } from '@/data/technologies';
+import { cvEntries } from '@/data/cvEntries';
+---
+
+<BaseLayout 
+  title="CV - Nikos Dimitriadis"
+  description="My professional journey as a Data Engineer and Software Engineer."
+>
+  <!-- Header -->
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6 animate-fade-in">
+        Professional Journey
+      </h1>
+      <p class="text-xl text-gray-400 animate-fade-in" style="animation-delay: 100ms">
+        A timeline of growth, challenges, and achievements
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-purple via-neon-pink to-neon-blue"></div>
+
+        <!-- Checkpoints -->
+        <div class="space-y-16">
+          {cvEntries.map((entry, index) => (
+            <div class="relative fade-on-scroll" style={`animation-delay: ${index * 100}ms`}>
+              <!-- Timeline dot -->
+              <div class={`absolute left-8 md:left-1/2 w-4 h-4 -ml-2 rounded-full bg-gradient-to-r ${entry.gradient} border-4 border-black`}></div>
+
+              <!-- Content -->
+              <a 
+                href={`/cv/${entry.slug}`}
+                class="block ml-20 md:ml-0 md:pl-0 group"
+              >
+                <div class={`bg-medium-gray border border-gray-800 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-neon-purple/50 hover:scale-105 ${
+                  index % 2 === 0 ? 'md:mr-auto md:ml-0 md:w-[calc(50%-3rem)]' : 'md:ml-auto md:mr-0 md:w-[calc(50%-3rem)]'
+                }`}>
+                  <!-- Logo -->
+                  {entry.logoSrc && (
+                    <div class="mb-4 flex items-center gap-3">
+                      <img 
+                        src={entry.logoSrc} 
+                        alt={`${entry.title} logo`} 
+                        class="h-8 w-auto object-contain"
+                      />
+                    </div>
+                  )}
+                  
+                  <span class="text-sm text-neon-purple font-medium mb-2 block">{entry.date}</span>
+                  <h3 class="text-2xl font-bold font-heading mb-3 group-hover:text-neon-pink transition-colors duration-200">
+                    {entry.title}
+                  </h3>
+                  <p class="text-gray-400 mb-4">
+                    {entry.description}
+                  </p>
+                  <div class="flex items-center gap-2 text-neon-purple group-hover:text-neon-pink transition-colors duration-200">
+                    <span class="text-sm font-medium">Read more</span>
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies Carousel -->
+  <section class="py-20 px-4 bg-dark-gray mt-20">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold font-heading text-center mb-12 fade-on-scroll">
+        Technologies & Tools
+      </h2>
+      <TechCarousel client:load items={technologies} />
+    </div>
+  </section>
+</BaseLayout>
