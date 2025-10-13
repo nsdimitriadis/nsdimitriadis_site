@@ -7,8 +7,8 @@ import sitemap from '@astrojs/sitemap';
 const REPLIT_HOST = 'c611b145-39b5-4b6f-9fd3-5e1ef5ed92c1-00-e4c2l78mdzov.janeway.replit.dev';
 
 export default defineConfig({
-  site: 'https://nsdimitriadis.github.io',
-  base: '/nsdimitriadis_site/',
+  site: 'https://nsdimitriadis.com',
+  base: '/',
   integrations: [
     tailwind(),
     react(),
