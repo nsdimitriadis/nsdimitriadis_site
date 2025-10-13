@@ -8,7 +8,7 @@ const REPLIT_HOST = 'c611b145-39b5-4b6f-9fd3-5e1ef5ed92c1-00-e4c2l78mdzov.janewa
 
 export default defineConfig({
   site: 'https://nsdimitriadis.github.io',
-  base: '/AstroPage/',
+  base: '/nsdimitriadis_site/',
   integrations: [
     tailwind(),
     react(),
