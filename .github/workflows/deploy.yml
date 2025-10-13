@@ -34,7 +34,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload artifact
+      - name: Add CNAME to artifact
+        run: echo nsdimitriadis.com > dist/CNAME
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
