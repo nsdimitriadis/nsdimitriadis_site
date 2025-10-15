@@ -6,17 +6,20 @@ const sports = [
   { 
     title: 'Rugby', 
     href: '/sports/rugby',
-    gradient: 'from-neon-purple to-neon-pink'
+    gradient: 'from-neon-purple to-neon-pink',
+    backImage: '/images/tiles/rugby.png'
   },
   { 
     title: 'Football', 
     href: '/sports/football',
-    gradient: 'from-neon-blue to-neon-purple'
+    gradient: 'from-neon-blue to-neon-purple',
+    backImage: '/images/tiles/football.png'
   },
   { 
     title: 'Basketball', 
     href: '/sports/basketball',
-    gradient: 'from-neon-pink to-silver'
+    gradient: 'from-neon-pink to-silver',
+    backImage: '/images/tiles/basketball.jpg'
   },
 ];
 ---
@@ -49,6 +52,7 @@ const sports = [
               href={sport.href}
               gradient={sport.gradient}
               variant="bright"
+              backImage={sport.backImage}
             />
           </div>
         ))}

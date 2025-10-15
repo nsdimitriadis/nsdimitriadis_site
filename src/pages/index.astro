@@ -5,10 +5,10 @@ import TechCarousel from '@/components/TechCarousel';
 import { technologies } from '@/data/technologies';
 
 const tiles = [
-  { title: 'CV', href: '/cv', gradient: 'from-neon-purple to-neon-pink' },
-  { title: 'Sports', href: '/sports', gradient: 'from-neon-blue to-neon-purple' },
-  { title: 'Music', href: '/music', gradient: 'from-neon-pink to-neon-purple' },
-  { title: 'Contact', href: '/contact', gradient: 'from-silver to-neon-blue' },
+  { title: 'CV', href: '/cv', gradient: 'from-neon-purple to-neon-pink', backImage: '/images/tiles/cv.png' },
+  { title: 'Sports', href: '/sports', gradient: 'from-neon-blue to-neon-purple', backImage: '/images/tiles/sports.png' },
+  { title: 'Music', href: '/music', gradient: 'from-neon-pink to-neon-purple', backImage: '/images/tiles/music.png' },
+  { title: 'Contact', href: '/contact', gradient: 'from-silver to-neon-blue', backImage: '/images/tiles/contact.png' },
 ];
 ---
 
@@ -39,6 +39,7 @@ const tiles = [
               title={tile.title}
               href={tile.href}
               gradient={tile.gradient}
+              backImage={tile.backImage}
             />
           </div>
         ))}
