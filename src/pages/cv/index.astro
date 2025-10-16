@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import TechCarousel from '@/components/TechCarousel';
 import { technologies } from '@/data/technologies';
 import { cvEntries } from '@/data/cvEntries';
+import { withBase } from '@/utils/path';
 ---
 
 <BaseLayout 
@@ -18,6 +19,23 @@ import { cvEntries } from '@/data/cvEntries';
       <p class="text-xl text-gray-400 animate-fade-in" style="animation-delay: 100ms">
         A timeline of growth, challenges, and achievements
       </p>
+    </div>
+  </section>
+
+  <!-- Technologies Grid (CV specific) -->
+  <section class="py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold font-heading text-center mb-10 fade-on-scroll">Technologies</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+        {technologies.map((tech) => (
+          <div class="group bg-medium-gray border border-gray-800 rounded-xl p-4 flex flex-col items-center justify-center text-center transition-all duration-200 hover:border-neon-purple/50 hover:shadow-[0_0_20px_rgba(193,53,132,0.15)] hover:-translate-y-0.5">
+            {tech.icon && (
+              <img src={withBase(tech.icon)} alt={tech.label} class="w-10 h-10 md:w-12 md:h-12 object-contain mb-3" />
+            )}
+            <span class="text-sm md:text-base font-medium text-gray-300 group-hover:text-neon-pink transition-colors duration-200">{tech.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 

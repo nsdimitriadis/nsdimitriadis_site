@@ -24,30 +24,32 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6">
           Basketball
         </h1>
-        <div class="w-full h-64 md:h-96 bg-gradient-to-br from-neon-pink/20 to-silver/20 rounded-2xl mb-8 flex items-center justify-center border border-gray-800">
-          <span class="text-gray-500 text-lg">[ Hero Image Placeholder ]</span>
+        <div class="w-full h-64 md:h-96 rounded-2xl mb-8 overflow-hidden border border-gray-800 bg-black">
+          <img src={`${import.meta.env.BASE_URL}images/tiles/basketball.jpg`} alt="Basketball" class="w-full h-full object-contain" />
         </div>
       </div>
 
       <!-- Content -->
       <div class="prose prose-invert max-w-none">
         <p class="text-xl text-gray-400 leading-relaxed mb-8">
-          [Placeholder: Add content about your passion for basketball, playing experiences, favorite players, and what the sport teaches you.]
+          Basketball is the sport I trained in most seriously. I knew there were physical limits I didn’t naturally have for the highest levels—but I loved the craft, the discipline, and the team rhythms of the game.
         </p>
         
         <h2>The Court</h2>
         <p>
-          [Add detailed content about your basketball journey and experiences]
+          I started around age 9–10 at one of Thessaloniki’s best academies—<strong>Iraklis</strong>—where coaches like <strong>Maltezos</strong> drilled the fundamentals. At 15, I moved to <strong>Keravnos Agiou Pavlou</strong>, a local club that gave me more minutes and responsibility. Coach <strong>Tzamelis</strong> was relentless and passionate; he shaped me as an athlete and accelerated my physical development at a critical age.
         </p>
 
         <h2>Key Experiences</h2>
-        <p>
-          [Share memorable moments and experiences from basketball]
-        </p>
+        <ul>
+          <li>A deep youth-league run with Keravnos—knocked out unfairly in the Round of 8 in Thessaloniki’s ultra-competitive league.</li>
+          <li>Nearly a decade of club basketball before stepping away from formal training at 19.</li>
+          <li>Rediscovering the game today purely for fun—pick-up runs, shooting sessions, and the love of it.</li>
+        </ul>
 
         <h2>Strategy & Skill</h2>
         <p>
-          [Describe what basketball has taught you about strategy and teamwork]
+          Basketball taught me structure and spacing, timing and patience—how small edges add up over four quarters. It also taught humility: understanding roles, trusting teammates, and embracing the grind even when the ceiling isn’t the highest.
         </p>
       </div>
     </div>

@@ -24,30 +24,32 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6">
           Football
         </h1>
-        <div class="w-full h-64 md:h-96 bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 rounded-2xl mb-8 flex items-center justify-center border border-gray-800">
-          <span class="text-gray-500 text-lg">[ Hero Image Placeholder ]</span>
+        <div class="w-full h-64 md:h-96 rounded-2xl mb-8 overflow-hidden border border-gray-800 bg-black">
+          <img src={`${import.meta.env.BASE_URL}images/tiles/football.png`} alt="Football" class="w-full h-full object-contain" />
         </div>
       </div>
 
       <!-- Content -->
       <div class="prose prose-invert max-w-none">
         <p class="text-xl text-gray-400 leading-relaxed mb-8">
-          [Placeholder: Add content about your love for football, favorite teams, playing experiences, and what makes the beautiful game special to you.]
+          Football has always been my first sporting love. As a kid I dreamed of becoming a footballer, winning the school league, and getting better every season. I played for All Stars FC for a couple of years around age eight, then drifted into basketball—but the love for football never left.
         </p>
         
         <h2>The Beautiful Game</h2>
         <p>
-          [Add detailed content about your football journey and experiences]
+          My connection to the game is tied deeply to <strong>PAOK</strong>, my club from Thessaloniki. Following PAOK shaped how I watch, think about, and enjoy football—the tactics, the drama, the community. Off the pitch, I’ve poured thousands of hours into <strong>Football Manager</strong>, guiding PAOK, Brentford, Juventus, and Manchester United to Champions League glory. It’s half strategy, half obsession.
         </p>
 
         <h2>Favorite Moments</h2>
-        <p>
-          [Share memorable moments and experiences from football]
-        </p>
+        <ul>
+          <li>Playing for the Computer Science faculty team at Aristotle University of Thessaloniki—first as a player, then a player/coach, and later as coach when the team started surpassing me.</li>
+          <li>Watching PAOK’s big matches and feeling the city breathe with the team.</li>
+          <li>Career-defining saves and late winners—on a real pitch and on Football Manager alike.</li>
+        </ul>
 
         <h2>Philosophy</h2>
         <p>
-          [Describe your football philosophy and what it means to you]
+          Football is a teacher. It’s about patience, structure, and moments of brilliance—whether you’re coaching a uni team or simulating a dynasty in Football Manager. And about that team photo from uni? Don’t try to spot me—you’ll definitely fail.
         </p>
       </div>
     </div>

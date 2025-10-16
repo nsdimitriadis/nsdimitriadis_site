@@ -24,31 +24,47 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         <h1 class="text-4xl md:text-6xl font-bold font-heading mb-6">
           Rugby
         </h1>
-        <div class="w-full h-64 md:h-96 bg-gradient-to-br from-neon-purple/20 to-neon-pink/20 rounded-2xl mb-8 flex items-center justify-center border border-gray-800">
-          <span class="text-gray-500 text-lg">[ Hero Image Placeholder ]</span>
+        <div class="w-full h-64 md:h-96 rounded-2xl mb-8 overflow-hidden border border-gray-800 bg-black">
+          <img src={`${import.meta.env.BASE_URL}images/tiles/rugby.png`} alt="Rugby" class="w-full h-full object-contain" />
         </div>
       </div>
 
       <!-- Content -->
       <div class="prose prose-invert max-w-none">
         <p class="text-xl text-gray-400 leading-relaxed mb-8">
-          [Placeholder: Add content about your passion for rugby, the teams you've played for, memorable moments, and what the sport means to you.]
+          I picked up rugby in August 2016 with the Thessaloniki Lions knowing almost nothing about the sport—other than that it was unique, fast, and gloriously physical. I was hooked immediately. What started as curiosity quickly became a way of life: teammates, community, and the grit of a contact sport that rewards discipline and respect.
         </p>
         
         <h2>The Game</h2>
         <p>
-          [Add detailed content about your rugby journey and experiences]
+          I loved rugby’s combination of controlled chaos and structure: the collisions, the tactics, and the code of respect that binds rivals on the pitch. After a strong half-season with the Lions, I was approached to help start a new club. With a big circle of friends who were eager to try something different, we founded Rugby Rebels—where I served as founder, manager, and player.
         </p>
+
+        <h2>Timeline</h2>
+        <ul>
+          <li><strong>Aug 2016</strong>: Started with <em>Thessaloniki Lions</em>; fell in love with rugby’s unique, full-contact style.</li>
+          <li><strong>2017 – 2019</strong>: Co-founded <em>Rugby Rebels</em> (founder, manager, player). Within six months we played our first tournaments, stacked up games, and earned our first wins.</li>
+          <li><strong>2019 – 2021</strong>: Moved to Athens; played for <em>Panathinaikos</em> for a couple of seasons.</li>
+          <li><strong>2021</strong>: Moved to London; played a few games with <em>Old Streetonians</em> and trained with <em>Hackney RFC</em>.</li>
+          <li><strong>2022 & 2023</strong>: Attended <em>Flanders Open Rugby</em> with <em>Karatha Cavaliers</em>.</li>
+          <li><strong>2025</strong>: Attended the <em>Aegean Rugby Festival</em> with <em>Cretan Gunners</em>.</li>
+        </ul>
 
         <h2>Key Moments</h2>
-        <p>
-          [Share memorable moments and experiences from rugby]
-        </p>
+        <ul>
+          <li>Launching Rugby Rebels and seeing teammates wear the jersey for the first time.</li>
+          <li>Our early tournament appearances and the buzz of earning those first wins.</li>
+          <li>Playing festival rugby at Flanders with Karatha Cavaliers (2022, 2023).</li>
+          <li>Joining Cretan Gunners for the Aegean Rugby Festival (2025).</li>
+          <li>Experiencing the culture shift across clubs—Lions, Rebels, Panathinaikos, Old Streetonians, Hackney—same respect, new lessons.</li>
+        </ul>
 
         <h2>Lessons Learned</h2>
-        <p>
-          [Describe what rugby has taught you and how it influences your life]
-        </p>
+        <ul>
+          <li><strong>Leadership</strong>: Starting a club taught me recruitment, organization, and accountability.</li>
+          <li><strong>Resilience</strong>: You get hit, you get back up—simple rule, powerful mindset.</li>
+          <li><strong>Respect</strong>: For teammates, opponents, and the game; it carries into everything else I do.</li>
+        </ul>
       </div>
     </div>
   </article>
