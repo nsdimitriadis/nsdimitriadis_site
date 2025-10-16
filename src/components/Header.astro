@@ -4,7 +4,11 @@ const currentPath = Astro.url.pathname;
 const base = import.meta.env.BASE_URL;
 const withBase = (p: string) => `${base}${p.replace(/^\//, '')}`;
 
+const homeHref = withBase('/');
+const isActive = (href: string) => href === homeHref ? currentPath === homeHref : currentPath.startsWith(href);
+
 const navItems = [
+  { href: homeHref, label: 'Home' },
   { href: withBase('/cv'), label: 'CV' },
   { href: withBase('/sports'), label: 'Sports' },
   { href: withBase('/music'), label: 'Music' },
@@ -26,7 +30,7 @@ const navItems = [
           <a 
             href={item.href}
             class={`text-sm font-medium transition-colors duration-200 relative group ${
-              currentPath.startsWith(item.href)
+              isActive(item.href)
                 ? 'text-neon-purple' 
                 : 'text-gray-300 hover:text-white'
             }`}
@@ -56,7 +60,7 @@ const navItems = [
           <a 
             href={item.href}
             class={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-              currentPath.startsWith(item.href)
+              isActive(item.href)
                 ? 'text-neon-purple bg-medium-gray' 
                 : 'text-gray-300 hover:text-white hover:bg-medium-gray'
             }`}
