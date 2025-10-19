@@ -5,6 +5,7 @@ export type TechnologyItem = {
 
 export const technologies: TechnologyItem[] = [
   { label: 'Python', icon: '/images/tech/python.svg' },
+  { label: 'Dagster', icon: '/images/tech/dagster.svg' },
   { label: 'BigQuery', icon: '/images/tech/google-bigquery-logo-1.svg' },
   { label: 'GCP', icon: '/images/tech/google-cloud.svg' },
   { label: 'Airbyte', icon: '/images/tech/airbyte.svg' },
